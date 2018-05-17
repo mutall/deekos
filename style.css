@@ -1,0 +1,128 @@
+@charset "utf-8";
+/* CSS Document */
+@font-face{
+    font-family: roboto;
+    src:url(fonts/Roboto-Regular.ttf);
+    
+    font-family: hind-regular;
+    src:url(fonts/Hind-Regular.ttf);
+    
+    font-family: hind-semibold;
+    src:url(fonts/Hind-SemiBold.ttf);
+    
+    font-family: hind-medium;
+    src:url(fonts/Hind-Medium.ttf);
+    
+}
+*{
+	box-sizing:border-box;
+}
+body{
+    background-color:#ADBDCC;
+}
+
+/*Setup grid view widths*/
+.col-1{width: 8.33%;}
+.col-2{width: 16.66%;}
+.col-3{width: 24.99%;}
+.col-4{width: 33.32%;}
+.col-5{width: 41.65%;}
+.col-6{width: 49.98%;}
+.col-7{width: 58.31%;}
+.col-8{width: 66.64%;}
+.col-9{width: 74.97%;}
+.col-10{width: 83.3%;}
+.col-11{width: 91.63%;}
+.col-12{width: 100%;}
+
+.flex-container{
+	display: flex;
+}
+.flex-container >*{
+	flex-direction: column;
+}
+
+
+#logo img{
+	max-width: 100%;
+}
+
+#container{
+	background-color: rgb(230, 236, 232);
+}
+.card-panel{
+    background-color:   hsl(45, 100%, 90%);
+    font-family: hind-medium;
+    text-transform: uppercase;
+    -webkit-transition:-webkit-box-shadow .25s;
+    transition:-webkit-box-shadow .25s;
+    transition:box-shadow .25s;
+    transition:box-shadow .25s, -webkit-box-shadow .25s;
+    padding:24px;
+    margin: .9% .5% .3% .5%;
+    border-radius:20px;
+    box-shadow:0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.12),0 1px 5px 0 rgba(0,0,0,0.2);
+    transition:all 0.2s ease-in-out;
+
+}
+.card-panel:hover{
+	cursor: pointer;
+	transform: scale(1.03, 1.03);
+}
+#header{
+    height: 200px;
+    overflow-y:scroll;
+}
+.container{
+    
+}
+li{
+    padding: 5px  !important;
+    list-style-type: none;
+}
+.container{
+    display: flex;
+}
+.container>*{
+    flex-direction: row;
+    margin: 5% 2%;
+}
+
+aside:hover{
+    cursor: pointer;
+    transform: none !important;   
+}
+content{
+    overflow: scroll;
+}
+/*style the table*/
+table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table td, table th {
+    border: 1px solid #ddd;
+}
+
+table tr:nth-child(even){background-color: #f2f2f2;}
+
+table tr:hover {background-color: #ddd;}
+
+table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+
+
+h3{
+    text-transform: uppercase;
+    font-family: roboto;
+    text-align: center;
+    color: hsl(0, 0%, 17%);
+}
+
