@@ -1,20 +1,21 @@
 
 <?php
-
 require 'database.php';
 //inherit the method from database to test for a connection
-class crud extends database {
 
+class crud extends database {
+   public $db;
     //invoke the super constructor to check for a connection
     public function __construct() {
         parent::__construct();
+        $this->db=new database();
     }
 
     
     //function for getting data from database and displaying
     
     public function getData($query) {
-        $result= $this->connection->query($query);
+        $result= $this->db->query($query);
         if(!$result){
            die('Failed'. $this->connection->connect_error);
         }
@@ -29,7 +30,7 @@ class crud extends database {
     }
     //function to execute a query based on an sql statement
     public function execute($query) {
-        $result = $this->connection->query($query);
+        $result = $this->db->query($query);
 
         if ($result == false) {
             die('cannot execute query'. $this->connection->error) ;
