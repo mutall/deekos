@@ -18,7 +18,8 @@
 	box-sizing:border-box;
 }
 body{
-    background-color:#ADBDCC;
+    
+    background-color:rgb(211, 211, 211);
 }
 
 /*Setup grid view widths*/
@@ -51,49 +52,17 @@ body{
 	background-color: rgb(230, 236, 232);
 }
 .card-panel{
-    background-color:   hsl(45, 100%, 90%);
+    background-color: #fff;
     font-family: hind-medium;
-    text-transform: uppercase;
     -webkit-transition:-webkit-box-shadow .25s;
     transition:-webkit-box-shadow .25s;
     transition:box-shadow .25s;
     transition:box-shadow .25s, -webkit-box-shadow .25s;
     padding:24px;
     margin: .9% .5% .3% .5%;
-    border-radius:20px;
     box-shadow:0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.12),0 1px 5px 0 rgba(0,0,0,0.2);
     transition:all 0.2s ease-in-out;
 
-}
-.card-panel:hover{
-	cursor: pointer;
-	transform: scale(1.03, 1.03);
-}
-#header{
-    height: 200px;
-    overflow-y:scroll;
-}
-.container{
-    
-}
-li{
-    padding: 5px  !important;
-    list-style-type: none;
-}
-.container{
-    display: flex;
-}
-.container>*{
-    flex-direction: row;
-    margin: 5% 2%;
-}
-
-aside:hover{
-    cursor: pointer;
-    transform: none !important;   
-}
-content{
-    overflow: scroll;
 }
 /*style the table*/
 table {
@@ -125,4 +94,11 @@ h3{
     text-align: center;
     color: hsl(0, 0%, 17%);
 }
-
+.selector{
+    width: 50%;
+    margin: auto;
+    
+}
+content{
+    margin-top: 5%;
+}
