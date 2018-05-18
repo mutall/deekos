@@ -1,102 +1,256 @@
 @charset "utf-8";
 /* CSS Document */
-@font-face{
+
+@font-face {
     font-family: roboto;
-    src:url(fonts/Roboto-Regular.ttf);
-    
+    src: url(fonts/Roboto-Regular.ttf);
+
     font-family: hind-regular;
-    src:url(fonts/Hind-Regular.ttf);
-    
+    src: url(fonts/Hind-Regular.ttf);
+
     font-family: hind-semibold;
-    src:url(fonts/Hind-SemiBold.ttf);
-    
+    src: url(fonts/Hind-SemiBold.ttf);
+
     font-family: hind-medium;
-    src:url(fonts/Hind-Medium.ttf);
-    
+    src: url(fonts/Hind-Medium.ttf);
+
 }
-*{
-	box-sizing:border-box;
+
+* {
+    box-sizing: border-box;
 }
-body{
-    
-    background-color:rgb(211, 211, 211);
+
+body {
+
+    background-color: rgb(211, 211, 211);
 }
 
 /*Setup grid view widths*/
-.col-1{width: 8.33%;}
-.col-2{width: 16.66%;}
-.col-3{width: 24.99%;}
-.col-4{width: 33.32%;}
-.col-5{width: 41.65%;}
-.col-6{width: 49.98%;}
-.col-7{width: 58.31%;}
-.col-8{width: 66.64%;}
-.col-9{width: 74.97%;}
-.col-10{width: 83.3%;}
-.col-11{width: 91.63%;}
-.col-12{width: 100%;}
 
-.flex-container{
-	display: flex;
-}
-.flex-container >*{
-	flex-direction: column;
+.col-1 {
+    width: 8.33%;
 }
 
-
-#logo img{
-	max-width: 100%;
+.col-2 {
+    width: 16.66%;
 }
 
-#container{
-	background-color: rgb(230, 236, 232);
+.col-3 {
+    width: 24.99%;
 }
-.card-panel{
+
+.col-4 {
+    width: 33.32%;
+}
+
+.col-5 {
+    width: 41.65%;
+}
+
+.col-6 {
+    width: 49.98%;
+}
+
+.col-7 {
+    width: 58.31%;
+}
+
+.col-8 {
+    width: 66.64%;
+}
+
+.col-9 {
+    width: 74.97%;
+}
+
+.col-10 {
+    width: 83.3%;
+}
+
+.col-11 {
+    width: 91.63%;
+}
+
+.col-12 {
+    width: 100%;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.flex-container > * {
+    flex-direction: column;
+}
+
+
+#logo img {
+    max-width: 100%;
+}
+
+#container {
+    background-color: rgb(230, 236, 232);
+}
+
+.card-panel {
     background-color: #fff;
     font-family: hind-medium;
-    -webkit-transition:-webkit-box-shadow .25s;
-    transition:-webkit-box-shadow .25s;
-    transition:box-shadow .25s;
-    transition:box-shadow .25s, -webkit-box-shadow .25s;
-    padding:24px;
+    -webkit-transition: -webkit-box-shadow .25s;
+    transition: -webkit-box-shadow .25s;
+    transition: box-shadow .25s;
+    transition: box-shadow .25s, -webkit-box-shadow .25s;
+    padding: 24px;
     margin: .9% .5% .3% .5%;
-    box-shadow:0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.12),0 1px 5px 0 rgba(0,0,0,0.2);
-    transition:all 0.2s ease-in-out;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease-in-out;
 
 }
+
 /*style the table*/
+
 table {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
 }
 
-table td, table th {
+table td,
+table th {
     border: 1px solid #ddd;
 }
 
-table tr:nth-child(even){background-color: #f2f2f2;}
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
 
-table tr:hover {background-color: #ddd;}
+table tr:hover {
+    background-color: #ddd;
+}
 
 table th {
     text-align: center;
-    background-color:rgb(245,170, 156);
-    
+    background-color: rgb(245, 170, 156);
+
 }
 
 
-h3{
+h3 {
     text-transform: uppercase;
     font-family: roboto;
     text-align: center;
     color: hsl(0, 0%, 17%);
 }
-.selector{
+
+.selector {
     width: 50%;
     margin: auto;
-    
+
 }
-content{
+
+content {
     margin-top: 5%;
+}
+
+.button-group {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    font-size: 0em;
+    vertical-align: baseline;
+    margin: 0em 0.25em 0em 0em;
+    flex-wrap: wrap;
+
+
+}
+
+/*style the client group independently*/
+
+.branch {
+    height: 400px !important;
+    flex-direction: column;
+
+}
+
+.all-periods {
+    flex-direction: row;
+}
+
+.button-group:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.button {
+    cursor: pointer;
+    display: inline-block;
+    min-height: 1em;
+    outline: none;
+    border: none;
+    vertical-align: baseline;
+    background: #E0E1E2 none;
+    color: rgba(0, 0, 0, 0.6);
+    font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    margin: 0em 0.25em 0em 0em;
+    padding: 0.78571429em 1.5em 0.78571429em;
+    text-transform: none;
+    text-shadow: none;
+    font-weight: bold;
+    line-height: 1em;
+    font-style: normal;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 0.28571429rem;
+    -webkit-box-shadow: 0px 0px 0px 1px transparent inset, 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+    box-shadow: 0px 0px 0px 1px transparent inset, 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease, background 0.1s ease, -webkit-box-shadow 0.1s ease;
+    transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease, background 0.1s ease, -webkit-box-shadow 0.1s ease;
+    transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+    transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease, box-shadow 0.1s ease, background 0.1s ease, -webkit-box-shadow 0.1s ease;
+    will-change: '';
+    -webkit-tap-highlight-color: transparent;
+}
+
+.client {
+    -webkit-box-shadow: 0px 0px 0px 1px #21BA45 inset !important;
+    box-shadow: 0px 0px 0px 1px #21BA45 inset !important;
+    color: #A5673F !important;
+    
+    background: none !important;
+}
+.period{
+    -webkit-box-shadow: 0px 0px 0px 1px #21BA45 inset !important;
+    box-shadow: 0px 0px 0px 1px #21BA45 inset !important;
+    color: #A5673F !important;
+    
+    background: none !important;
+}
+
+.display{
+    -webkit-box-shadow: 0px 0px 0px 1px #21BA45 inset !important;
+    box-shadow: 0px 0px 0px 1px #21BA45 inset !important;
+    color: #A5673F !important;
+    
+    background: none !important;
+}
+
+.primary{
+    background-color: #2185d0 !important;
+    color: #fff !important;
+    text-shadow: none;
+    background-image: none
+}
+
+.period:hover, .display:hover,   .client:hover{
+    color: #FFF !important;
+    background: #A5673F !important;
 }

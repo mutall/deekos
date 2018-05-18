@@ -22,32 +22,36 @@ $d = new Delivery();
 
     <body>
         <header id="header" class="col-12">
-            <nav class="card-panel">
+            <nav class="card-panel ">
+                <div class="button-group branch">
                 <?php
                 $d->showClient();
             ?>
+                    </div>
             </nav>
         </header>
-        <aside class="card-panel">
-            <ul>
-                <?php 
-                    $d->showPeriod();
-                    ?>
-            </ul>
+        <aside class="card-panel all-Periods">
+            <div class="button-group">
+            <?php 
+                $d->showPeriod();
+                ?>
+            </div>
         </aside>
         <div class=" card-panel" id="content">
-            <button class='display' id="raw">RAW TABLE</button>
-            <button class='display' id="net">NET VALUES</button>
-            <button class='display' id="variance">VARIANCES FOR THAT BRANCH</button>
-            <button class='display' id="all">ALL IN ONE TABLE</button>
+            <button class='display button' id="raw">RAW TABLE</button>
+            <button class='display button' id="net">NET VALUES</button>
+            <button class='display button' id="variance">VARIANCES FOR THAT BRANCH</button>
+            <button class='display button' id="all">ALL IN ONE TABLE</button>
 
         </div>
         <div class="card-panel">
             <p>You selected $foo branch</p>
             <p>For $bar period</p>
             <p>Display as $foo</p>
-            <button id="continue">CONTINUE</button>
-            <button id="cancel">CANCEL</button>
+            <div class="button-group">
+                <button id="continue" class="primary    button">CONTINUE</button>
+                <button id="cancel" class="button" >CANCEL</button>
+            </div>
         </div>
     </body>
 

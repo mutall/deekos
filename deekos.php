@@ -134,7 +134,7 @@ class Delivery {
         $client_names = $this->crud->getData($sql);
         
         foreach($client_names as $key =>$value){
-            echo "<button class='client'>".$value['name']."</button>";
+            echo "<button class='client button'>".$value['name']."</button>";
         }
         
         
@@ -148,7 +148,7 @@ class Delivery {
         $period = $this->crud->getData($sql);
 
         foreach ($period as $key => $value) {
-        echo "<button class='period'>".$value['curr_period']. "</button>";
+        echo "<button class='period button'>".$value['curr_period']. "</button>";
 
         }
     }
