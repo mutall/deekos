@@ -23,7 +23,7 @@ $d = new Delivery();
     <body>
         <header id="header" class="col-12">
             <nav class="card-panel ">
-                <div class="button-group branch">
+                <div class="button-group branch" id="branch">
                 <?php
                 $d->showClient();
             ?>
@@ -31,7 +31,7 @@ $d = new Delivery();
             </nav>
         </header>
         <aside class="card-panel all-Periods">
-            <div class="button-group">
+            <div class="button-group" id="period" >
             <?php 
                 $d->showPeriod();
                 ?>

@@ -14,7 +14,7 @@ function Delivery() {
             this._name = val
         }
     };
-    
+
     period = {
         get period() {
             return this._period
@@ -23,7 +23,7 @@ function Delivery() {
             this._period = aPeriod
         }
     };
-    
+
     display = {
         get display() {
             return this._display
@@ -38,17 +38,17 @@ function Delivery() {
     //use this method to process the information 
     this.process = function () {
         //test if a user has selected all three options
-        if(!this.branch && !this.period && !this.display){
+        if (!this.branch && !this.period && !this.display) {
             alert('You have to select atleast 1 option');
         }
-        
+
         var json = JSON.stringify({
             "name": this.branch,
             "period": this.period,
             "display": this.display
         });
-        
-        window.open("delivery_report.php?q="+json);
+
+        window.open("delivery_report.php?q=" + json);
     }
 }
 
@@ -62,30 +62,38 @@ function Handlers() {
         let display = document.getElementsByClassName('display');
         let ok = document.getElementById('continue');
         let cancel = document.getElementById('cancel');
-        
+
 
         for (x in client) {
             client[x].onclick = function () {
-               delivery.branch=this.textContent;
+                delivery.branch = this.textContent;
+                let current = document.getElementById("branch");
+                let current = branch.getElementsByClassName("active");
+                if (!current[0]) {
+                    this.className += " active";
+                } else {
+                    current[0].className = current[0].className.replace(" active", "");
+                    this.className += " active";
+                }
             }
         }
 
-        for (x in period) {
-            period[x].onclick = function () {
-                delivery.period=this.textContent;
+            for (x in period) {
+                period[x].onclick = function () {
+                    delivery.period = this.textContent;
+                }
             }
-        }
 
-        for (x in display) {
-            display[x].onclick = function () {
-                delivery.display=this.id;
+            for (x in display) {
+                display[x].onclick = function () {
+                    delivery.display = this.id;
+                }
             }
-        }
-        
-        ok.onclick=function(){
-            delivery.process()
-        }
-    };
-    
-    
-}
+
+            ok.onclick = function () {
+                delivery.process()
+            }
+        };
+
+
+    }
