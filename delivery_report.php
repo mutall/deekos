@@ -10,28 +10,40 @@ if (!$get_super) {
 }
 //decode the json string obtained
 $decoded_json = json_decode($get_super);
-$name = $decoded_json->name;
-$period = $decoded_json->period;
+$name = (!is_null($decoded_json->name))?$decoded_json->name:null;
+$period = (!is_null($decoded_json->period))?$decoded_json->period:null;
+$display=$decoded_json->display;
 
 $delivery = new Delivery();
 
+?>
+<html>
+    <head>
+        <title>title</title>
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <?php
 //do a switch statement to display data in a when the user selects a display type
-$display=$decoded_json->display;
+            switch($display){
+                case 'raw':
+                    $delivery->show($name, $period, $display);
+                    break;
+                case 'net':
+                    $delivery->show($name, $period, $display);
+                    break;
+                case 'variance':
+                    $delivery->show($name, $period, $display);
+                    break;
+                case 'all':
+                    $delivery->show($name, $period, $display);
+                    break;
+        }
 
-switch($display){
-    case 'raw':
-        $delivery->show($name, $period);
-        break;
-    case 'net':
-        $delivery->showNet($name, $period);
-        break;
-    case 'variance':
-        $delivery->showVariance($name, $period);
-        break;
-    case 'all':
-        $delivery->showAll($name, $period);
-        break;
-}
+        ?>
+    </body>
+</html>
+
 
 
 
