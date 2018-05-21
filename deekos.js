@@ -63,37 +63,46 @@ function Handlers() {
         let ok = document.getElementById('continue');
         let cancel = document.getElementById('cancel');
 
-
+        this_=this;
         for (x in client) {
             client[x].onclick = function () {
                 delivery.branch = this.textContent;
-                let current = document.getElementById("branch");
-                let current = branch.getElementsByClassName("active");
-                if (!current[0]) {
-                    this.className += " active";
-                } else {
-                    current[0].className = current[0].className.replace(" active", "");
-                    this.className += " active";
-                }
+                this_.activeSelector("branch", this);
+
             }
         }
 
-            for (x in period) {
-                period[x].onclick = function () {
-                    delivery.period = this.textContent;
-                }
+        for (x in period) {
+            period[x].onclick = function () {
+                delivery.period = this.textContent;
+                this_.activeSelector("period", this);
             }
+        }
 
-            for (x in display) {
-                display[x].onclick = function () {
-                    delivery.display = this.id;
-                }
+        for (x in display) {
+            display[x].onclick = function () {
+                delivery.display = this.id;
+                this_.activeSelector("content", this);
             }
+        }
 
-            ok.onclick = function () {
-                delivery.process()
-            }
-        };
-
-
+        ok.onclick = function () {
+            delivery.process()
+        }
+    };
+    //write a method activeSelector that takes one parameter html id
+    //The first parameter is a html id. 
+    this.activeSelector = function (id_param, button) {
+        let container = document.getElementById(id_param);
+        let current = container.getElementsByClassName("active");
+        if (!current[0]) {
+            console.log(this.className);
+            button.className += " active";
+        } else {
+            current[0].className = current[0].className.replace(" active", "");
+            button.className += " active";
+        }
     }
+
+
+}
