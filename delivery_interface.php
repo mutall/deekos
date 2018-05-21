@@ -32,7 +32,7 @@ $d = new Delivery();
         </header>
         <aside class="card-panel all-Periods">
             <div class="button-group" id="period" >
-            <?php 
+            <?php
                 $d->showPeriod();
                 ?>
             </div>
@@ -41,15 +41,6 @@ $d = new Delivery();
             <button class='display button' id="raw">RAW TABLE</button>
             <button class='display button' id="net">NET VALUES</button>
             <button class='display button' id="variance">VARIANCES FOR THAT BRANCH</button>
-        </div>
-        <div class="card-panel">
-            <p>You selected $foo branch</p>
-            <p>For $bar period</p>
-            <p>Display as $foo</p>
-            <div class="button-group">
-                <button id="continue" class="primary    button">CONTINUE</button>
-                <button id="cancel" class="button" >CANCEL</button>
-            </div>
         </div>
     </body>
 
