@@ -35,17 +35,9 @@ $delivery = new Delivery();
                 case 'variance':
                     $delivery->show($name, $period, $display);
                     break;
-                case 'all':
-                    $delivery->show($name, $period, $display);
-                    break;
+
         }
 
         ?>
     </body>
 </html>
-
-
-
-
-
-
