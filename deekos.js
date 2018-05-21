@@ -50,8 +50,6 @@ function Delivery() {
 
             window.open("delivery_report.php?q=" + json);
         }
-<<<<<<< HEAD
-=======
 
         var json = JSON.stringify({
             "name": this.branch,
@@ -60,7 +58,6 @@ function Delivery() {
         });
 
         window.open("delivery_report.php?q=" + json);
->>>>>>> feat-active-marker
     }
 }
 
@@ -74,40 +71,26 @@ function Handlers() {
         let display = document.getElementsByClassName('display');
         let ok = document.getElementById('continue');
         let cancel = document.getElementById('cancel');
-<<<<<<< HEAD
 
-=======
->>>>>>> feat-active-marker
-
-        this_=this;
+        this_ = this;
         for (x in client) {
             client[x].onclick = function () {
                 delivery.branch = this.textContent;
-<<<<<<< HEAD
-=======
                 this_.activeSelector("branch", this);
-
->>>>>>> feat-active-marker
             }
         }
 
         for (x in period) {
             period[x].onclick = function () {
                 delivery.period = this.textContent;
-<<<<<<< HEAD
-=======
                 this_.activeSelector("period", this);
->>>>>>> feat-active-marker
             }
         }
 
         for (x in display) {
             display[x].onclick = function () {
                 delivery.display = this.id;
-<<<<<<< HEAD
-=======
                 this_.activeSelector("content", this);
->>>>>>> feat-active-marker
             }
         }
 
@@ -115,8 +98,6 @@ function Handlers() {
             delivery.process()
         }
     };
-<<<<<<< HEAD
-=======
     //write a method activeSelector that takes one parameter html id
     //The first parameter is a html id. 
     this.activeSelector = function (id_param, button) {
@@ -130,7 +111,4 @@ function Handlers() {
             button.className += " active";
         }
     }
->>>>>>> feat-active-marker
-
-
 }
