@@ -41,8 +41,6 @@ $d = new Delivery();
             <button class='display button' id="raw">RAW TABLE</button>
             <button class='display button' id="net">NET VALUES</button>
             <button class='display button' id="variance">VARIANCES FOR THAT BRANCH</button>
-            <button class='display button' id="all">ALL IN ONE TABLE</button>
-
         </div>
         <div class="card-panel">
             <p>You selected $foo branch</p>

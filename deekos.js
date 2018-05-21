@@ -14,7 +14,7 @@ function Delivery() {
             this._name = val
         }
     };
-    
+
     period = {
         get period() {
             return this._period
@@ -23,7 +23,7 @@ function Delivery() {
             this._period = aPeriod
         }
     };
-    
+
     display = {
         get display() {
             return this._display
@@ -38,17 +38,18 @@ function Delivery() {
     //use this method to process the information 
     this.process = function () {
         //test if a user has selected all three options
-        if(!this.branch && !this.period && !this.display){
+        if (!this.branch && !this.period && !this.display) {
             alert('You have to select atleast 1 option');
+        } else {
+
+            var json = JSON.stringify({
+                "name": this.branch,
+                "period": this.period,
+                "display": this.display
+            });
+
+            window.open("delivery_report.php?q=" + json);
         }
-        
-        var json = JSON.stringify({
-            "name": this.branch,
-            "period": this.period,
-            "display": this.display
-        });
-        
-        window.open("delivery_report.php?q="+json);
     }
 }
 
@@ -62,30 +63,30 @@ function Handlers() {
         let display = document.getElementsByClassName('display');
         let ok = document.getElementById('continue');
         let cancel = document.getElementById('cancel');
-        
+
 
         for (x in client) {
             client[x].onclick = function () {
-               delivery.branch=this.textContent;
+                delivery.branch = this.textContent;
             }
         }
 
         for (x in period) {
             period[x].onclick = function () {
-                delivery.period=this.textContent;
+                delivery.period = this.textContent;
             }
         }
 
         for (x in display) {
             display[x].onclick = function () {
-                delivery.display=this.id;
+                delivery.display = this.id;
             }
         }
-        
-        ok.onclick=function(){
+
+        ok.onclick = function () {
             delivery.process()
         }
     };
-    
-    
+
+
 }
