@@ -1,9 +1,10 @@
+//start listeners when window has loaded
 window.onload = function () {
     var handler = new Handlers();
     handler.startListeners()
 
 }
-//create a class delivery 
+//create a class delivery
 function Delivery() {
     //create getter and setter values for branch name, period and display type
     branch = {
@@ -35,7 +36,7 @@ function Delivery() {
 
 
 
-    //use this method to process the information 
+    //use this method to process the information
     this.process = function () {
         //test if a user has selected all three options
         if (!this.branch && !this.period && !this.display) {
@@ -61,7 +62,7 @@ function Delivery() {
     }
 }
 
-//create a class for all handlers and exception 
+//create a class for all handlers and exception
 //methods housed in here will be primarily used for event handling and exception cating
 function Handlers() {
     //this is a method to assign click listeners when the page has loaded
@@ -99,7 +100,7 @@ function Handlers() {
         }
     };
     //write a method activeSelector that takes one parameter html id
-    //The first parameter is a html id. 
+    //The first parameter is a html id.
     this.activeSelector = function (id_param, button) {
         let container = document.getElementById(id_param);
         let current = container.getElementsByClassName("active");

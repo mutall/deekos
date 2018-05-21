@@ -3,10 +3,8 @@ require_once 'crud.php';
 require_once 'deekos.php';
 
 $d = new Delivery();
-
 ?>
-
-    <!DOCTYPE html>
+  <!DOCTYPE html>
     <html>
 
     <head>
@@ -32,7 +30,7 @@ $d = new Delivery();
         </header>
         <aside class="card-panel all-Periods">
             <div class="button-group" id="period" >
-            <?php 
+            <?php
                 $d->showPeriod();
                 ?>
             </div>
