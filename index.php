@@ -4,6 +4,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Untitled Document</title>
         <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" href="semantic.min.css"/>
+        <script src="semantic.min.js"></script>
     </head>
     <body>
         <header class="col-12 flex-container">
