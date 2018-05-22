@@ -38,7 +38,7 @@ function Delivery() {
     //use this method to process the information
     this.process = function () {
         //test if a user has selected all three options
-        if (!this.branch && !this.period && !this.display) {
+        if (!this.branch && !this.period) {
             alert('You have to select atleast 1 option');
         } else {
 
