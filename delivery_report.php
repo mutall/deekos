@@ -24,19 +24,7 @@ $delivery = new Delivery();
     </head>
     <body>
         <?php
-//do a switch statement to display data in a when the user selects a display type
-            switch($display){
-                case 'raw':
-                    $delivery->show($name, $period, $display);
-                    break;
-                case 'net':
-                    $delivery->show($name, $period, $display);
-                    break;
-                case 'variance':
-                    $delivery->show($name, $period, $display);
-                    break;
-
-        }
+        $delivery->show($name, $period, $display);
 
         ?>
     </body>
