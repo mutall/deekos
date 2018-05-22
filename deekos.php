@@ -102,7 +102,25 @@ class Delivery {
 
             // write an sql query to display calculated variance and the expected ones
             // do a column to show differences and thats what the deekos guys query
-        $variances="";
+        $variance="SELECT
+                      client.name, concat(month.num,'/',period.year) as period,
+                      total, type
+                    FROM
+                      gross_charges INNER join
+                      client on client.client=gross_charges.client INNER JOIN
+                      period on period.period=gross_charges.period INNER JOIN
+                      month on month.month=period.month
+                    WHERE $criteria
+                    UNION ALL
+                    SELECT
+                      client.name, concat(month.num,'/',period.year) as period,
+                      total, type
+                    FROM
+                      net_charges INNER join
+                      client on client.client=net_charges.client INNER JOIN
+                      period on period.period=net_charges.period INNER JOIN
+                      month on month.month=period.month
+                    WHERE $criteria";
 
 
         switch ($this->display){
@@ -131,12 +149,14 @@ class Delivery {
                 break;
 
             case "variance":
-                $result=$this->crud->getData($variances);
-                array_push($delivery, $result);
-                array_push($this->rows, 'cname', 'period');
-                array_push($this->columns, 'calculated', 'expected', 'difference');
-                $this->values='value';
+                $all_variances=$this->crud->getData($variance);
+
+                array_push($delivery, $all_variances);
+                array_push($this->rows, 'name', 'period');
+                array_push($this->columns, 'type');
+                $this->values='total';
                 $this->myTitle='Variances';
+                break;
         }
 
 

@@ -9,15 +9,18 @@ class crud extends database {
     public function __construct() {
         parent::__construct();
         $this->db=new database();
+        if ($this->db->connect_error) {
+          die('Connect Error: '.$this->db->connect_error);
+        }
     }
 
-    
+
     //function for getting data from database and displaying
-    
+
     public function getData($query) {
         $result= $this->db->query($query);
         if(!$result){
-           die('Failed'. $this->connection->connect_error);
+           die('Failed'. $this->db->error);
         }
         //create an array of the queryied data. To be iterated when the function
         //used
@@ -25,31 +28,31 @@ class crud extends database {
         while ($row = $result->fetch_assoc()) {
             $rows[]=$row;
         }
-        return $rows;        
-        
+        return $rows;
+
     }
     //function to execute a query based on an sql statement
     public function execute($query) {
         $result = $this->db->query($query);
 
         if ($result == false) {
-            die('cannot execute query'. $this->connection->error) ;
+            die('cannot execute query'. $this->db->connect_error) ;
         } else {
             echo "<a href=" .$_SERVER["REQUEST_URI"] ."</a>";
         }
         return $result;
     }
-    
-    
+
+
     //function to delete data from a database
-    
+
     public function delete($id, $table){
         $query="DELETE FROM $table WHERE id=$id";
-        
-        $result= $this->connection->query($query);
-        
+
+        $result= $this->query($query);
+
         if($result==false){
-            die('Cannot delete record: '.$this->connection->error);
+            die('Cannot delete record: '.$this->db->connect_error);
         }
         else{
             echo 'deleted succefully';

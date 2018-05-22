@@ -51,13 +51,6 @@ function Delivery() {
             window.open("delivery_report.php?q=" + json);
         }
 
-        var json = JSON.stringify({
-            "name": this.branch,
-            "period": this.period,
-            "display": this.display
-        });
-
-        window.open("delivery_report.php?q=" + json);
     }
 }
 
