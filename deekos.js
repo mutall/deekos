@@ -93,7 +93,6 @@ function Handlers() {
         let container = document.getElementById(id_param);
         let current = container.getElementsByClassName("active");
         if (!current[0]) {
-            console.log(this.className);
             button.className += " active";
         } else {
             current[0].className = current[0].className.replace(" active", "");
