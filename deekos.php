@@ -99,29 +99,74 @@ class Delivery {
             WHERE
             $criteria
             GROUP by delivery.type";
+        // Create a query for selecting the maximum date of a price item
+        $max_date="SELECT
+            max(date) as curr_date,
+            product.product
+        FROM
+            price INNER JOIN
+            product ON product.product=price.product
+        WHERE 
+            price.`date`<'2030-01-01'
+        GROUP BY product.product";
 
-            // write an sql query to display calculated variance and the expected ones
-            // do a column to show differences and thats what the deekos guys query
-        $variance="SELECT
-                      client.name, concat(month.num,'/',period.year) as period,
-                      total, type
-                    FROM
-                      gross_charges INNER join
-                      client on client.client=gross_charges.client INNER JOIN
-                      period on period.period=gross_charges.period INNER JOIN
-                      month on month.month=period.month
-                    WHERE $criteria
-                    UNION ALL
-                    SELECT
-                      client.name, concat(month.num,'/',period.year) as period,
-                      total, type
-                    FROM
-                      net_charges INNER join
-                      client on client.client=net_charges.client INNER JOIN
-                      period on period.period=net_charges.period INNER JOIN
-                      month on month.month=period.month
-                    WHERE $criteria";
+        // query for calculating the current price on the maximum date
+        $curr_price="SELECT
+                        max_date.product,
+                        price.value
+                    FROM 
+                        price INNER JOIN 
+                        ($max_date)as max_date ON max_date.curr_date=price.`date`
+                            AND max_date.product=price.product";
+        
+        // query from calculating the cost 
+        $cost="SELECT
+                    client.client,
+                    period.period,
+                    product.product,
+                    quantity.value as quantity,
+                    curr_price.value as price,
+                    IF(delivery.`type`='DISPATCH',quantity.value*curr_price.value,(quantity.value*curr_price.value)*-1)AS cost
+                FROM
+                    delivery INNER JOIN
+                    client ON client.client=delivery.client INNER JOIN
+                    period ON period.period=delivery.period INNER JOIN
+                    quantity ON quantity.delivery=delivery.delivery INNER JOIN
+                    product ON product.product=quantity.product INNER JOIN
+                    ($curr_price) as curr_price ON product.product=curr_price.product
+                ORDER BY 
+                    client, period";
+        // Query for the calculated grosses for each client on every period 
+        $calculated="SELECT 
+                        cost.client,
+                        cost.period,
+                        SUM(cost.cost) as total,
+                        'calculated' as `type`
+                    FROM 
+                        ($cost) as cost
+                    GROUP BY 
+                        client, period";
 
+        $gross="SELECT 
+                    client.client, 
+                    period.period,
+                    gross.ksh as total,
+                    'gross' as type
+                FROM
+                    gross INNER JOIN 
+                    client on gross.client=client.client INNER JOIN
+                    period ON period.period=gross.period";
+        
+        $union="$gross UNION ALL $calculated";
+
+        $variance="SELECT 
+                        * 
+                    FROM 
+                        ($union)as union inner join 
+                        client on client.client=union.client inner join
+                        period on period.period=union.period
+                    WHERE
+                        $criteria";
 
         switch ($this->display){
             case "raw":
