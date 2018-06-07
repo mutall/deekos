@@ -1,12 +1,17 @@
 
 <?php
+require_once "bootstrap.php";
+
 //inherit the method from database to test for a connection
 
 class crud extends mysqli {
+    
+    
     //invoke the super constructor to check for a connection
     public function __construct() {
-        parent::__construct('localhost', 'root', '', 'mutall_deekos');
+        parent::__construct(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
     }
+    
     //function for getting data from database and displaying
 
     public function getData($sql) {

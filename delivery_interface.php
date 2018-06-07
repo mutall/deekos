@@ -1,6 +1,5 @@
 <?php
-require_once 'crud.php';
-require_once 'deekos.php';
+require_once 'bootstrap.php';
 
 $d = new Delivery();
 

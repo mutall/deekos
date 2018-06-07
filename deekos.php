@@ -1,6 +1,5 @@
 <?php
-require_once 'PHPivot.php';
-require_once 'crud.php';
+require_once "bootstrap.php";
 
 class Delivery {
 
@@ -162,9 +161,10 @@ class Delivery {
         $variance="SELECT 
                         * 
                     FROM 
-                        ($union)as union inner join 
-                        client on client.client=union.client inner join
-                        period on period.period=union.period
+                        ($union)as union1 inner join 
+                        client on client.client=union1.client inner join
+                        period on period.period=union1.period inner join 
+                        month on month.month = period.month 
                     WHERE
                         $criteria";
 

@@ -1,5 +1,5 @@
 <?php
-require_once 'deekos.php';
+require_once 'bootstrap.php';
 
 // check if the get global variable is set
 //do a filter input
