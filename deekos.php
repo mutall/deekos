@@ -62,42 +62,24 @@ class Delivery {
 			WHERE
 			    $criteria
 		";
-        $net_dispatch="SELECT
-	    client.name as cname, sum(quantity.value) as value, product.name as pname
-			FROM
-			    client INNER JOIN delivery ON (client.client = delivery.client) INNER JOIN
-			    `period` ON (delivery.`period`= `period`.`period`) INNER JOIN
-			    `month` ON (`period`.`month` = `month`.`month`) INNER JOIN
-			    quantity ON (delivery.delivery = quantity.delivery) INNER JOIN
-			    product ON (quantity.product = product.product)
-        WHERE
-        $criteria AND
-        delivery.type='dispatch'
-        GROUP by product.name";
-
-        $net_returns="SELECT
-	    client.name as cname, sum(quantity.value)as value, product.name as pname
-			FROM
-			    client INNER JOIN delivery ON (client.client = delivery.client) INNER JOIN
-			    `period` ON (delivery.`period`= `period`.`period`) INNER JOIN
-			    `month` ON (`period`.`month` = `month`.`month`) INNER JOIN
-			    quantity ON (delivery.delivery = quantity.delivery) INNER JOIN
-			    product ON (quantity.product = product.product)
-        WHERE
-        $criteria AND
-        delivery.type='returns'
-        GROUP by product.name";
-
-        $net_delivery="SELECT
-	    client.name as cname, sum(quantity.value) as value, delivery.type as pname
-			FROM
-			    client INNER JOIN delivery ON (client.client = delivery.client) INNER JOIN
-			    `period` ON (delivery.`period`= `period`.`period`) INNER JOIN
-			    `month` ON (`period`.`month` = `month`.`month`) INNER JOIN
-			    quantity ON (delivery.delivery = quantity.delivery)
+        $net_values = "SELECT
+                client.name as cname, 
+                sum(quantity.value) as value, 
+                product.name as pname,
+                delivery.`type` as type
+            FROM
+                client INNER JOIN 
+                delivery ON (client.client = delivery.client) INNER JOIN
+                `period` ON (delivery.`period`= `period`.`period`) INNER JOIN
+                `month` ON (`period`.`month` = `month`.`month`) INNER JOIN
+                quantity ON (delivery.delivery = quantity.delivery) INNER JOIN
+                product ON (quantity.product = product.product)
             WHERE
-            $criteria
-            GROUP by delivery.type";
+                $criteria
+            GROUP BY
+                product.name, delivery.`type`
+        ";
+
         // Create a query for selecting the maximum date of a price item
         $max_date="SELECT
             max(date) as curr_date,
@@ -181,13 +163,11 @@ class Delivery {
 
                 break;
             case "net":
-                $summed_dispatch = $this->crud->getData($net_dispatch);
-                $summed_returns = $this->crud->getData($net_returns);
-                $summed_deliveries = $this->crud->getData($net_delivery);
-
-                array_push($delivery, $summed_dispatch, $summed_returns, $summed_deliveries);
+                $net = $this->crud->getData($net_values);
+                
+                array_push($delivery, $net);
                 array_push($this->rows, 'cname');
-                array_push($this->columns, 'pname');
+                array_push($this->columns, 'type', 'pname');
                 $this->values='value';
                 $this->column_title='BRANCH';
                 $this->myTitle='NET READINGS';
