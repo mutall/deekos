@@ -183,8 +183,6 @@ class Delivery {
                 $this->myTitle='Variances';
                 break;
         }
-
-
         return $delivery;
     }
 

@@ -3,24 +3,24 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Untitled Document</title>
-        <link rel="stylesheet" href="style.css"/>
-        <link rel="stylesheet" href="semantic.min.css"/>
-        <script src="semantic.min.js"></script>
+        <!-- <link rel="stylesheet" href="style.css"/> -->
+        <link rel="stylesheet" href="assets/css/materialize.css"/>
+        <script src="assets/js/materialize.min.js"></script>
     </head>
     <body>
-        <header class="col-12 flex-container">
-            <div id="logo" class="col-2">
-                <img src="images/logo.jpg" alt="logo"/>
+            <div class="nav-fixed">
+                <nav class="teal">
+                    <div class="nav-wrapper">
+                    <a href="#">LOGO</a>
+                        <ul class="right hide-on-med-and-down">
+                            <li><a href="">HOME</a></li>
+                            <li><a href="">ABOUT</a></li>
+                            <li><a href="filter.php">DELIVERY</a></li>
+                        </ul>
+                    </div>
+                </nav>
             </div>
-            <div class="col-10">
-                <button class="card-panel">HOME</button>
-                <button class="card-panel">ABOUT</button>
-                <button class="card-panel" onclick="open_page('pivot.php')">PIVOT</button>
-                <button class="card-panel" onclick="open_page('delivery_interface.php')">DELIVERIES</button>
-                <button class="card-panel" onclick="open_page('client_variances.htm')">VARIANCES</button>
-            </div>
-        </header>
-        <div id="slider">
+                <div id="slider">
             <img src="images/slider.jpg" alt="slider"/>
         </div>
         <div id="container" class="col-12">
