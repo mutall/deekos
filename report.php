@@ -10,17 +10,25 @@ if (!$get_super) {
 }
 //decode the json string obtained
 $decoded_json = json_decode($get_super);
-$name = (!is_null($decoded_json->name))?$decoded_json->name:null;
-$period = (!is_null($decoded_json->period))?$decoded_json->period:null;
-$display=$decoded_json->display;
+
+if(isset($decoded_json->name)){
+    $name = trim($decoded_json->name);
+}else{
+    $name = null;
+}
+if(isset($decoded_json->period)){
+    $period = trim($decoded_json->period);
+}else{
+    $period = null;
+}
+$display=trim($decoded_json->display);
 
 $delivery = new Delivery();
-
 ?>
 <html>
     <head>
         <title>title</title>
-        <link rel="stylesheet" href="style.css"/>
+        <link rel="stylesheet" href="assets/css/style.css"/>
     </head>
     <body>
         <?php
