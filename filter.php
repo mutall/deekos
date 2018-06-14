@@ -1,6 +1,5 @@
 <?php
-require_once 'crud.php';
-require_once 'deekos.php';
+require_once 'bootstrap.php';
 
 $d = new Delivery();
 
@@ -13,17 +12,15 @@ $d = new Delivery();
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Daily Deliveries</title>
-        <link rel="stylesheet" href="style.css">
-        <script type="text/javascript" src="deekos.js"></script>
-        <script type="text/javascript" >
-            var delivery= new Delivery();
-        </script>
+        <link rel="stylesheet" href="assets/css/style.css">
+        <script type="text/javascript" src="assets/js/deekos.js"></script>
         </head>
 
     <body>
+    <div class="container col-9">
         <header id="header" class="col-12">
             <nav class="card-panel ">
-                <div class="button-group branch">
+                <div class="button-group branch" id="branch">
                 <?php
                 $d->showClient();
             ?>
@@ -31,8 +28,8 @@ $d = new Delivery();
             </nav>
         </header>
         <aside class="card-panel all-Periods">
-            <div class="button-group">
-            <?php 
+            <div class="button-group" id="period" >
+            <?php
                 $d->showPeriod();
                 ?>
             </div>
@@ -41,17 +38,7 @@ $d = new Delivery();
             <button class='display button' id="raw">RAW TABLE</button>
             <button class='display button' id="net">NET VALUES</button>
             <button class='display button' id="variance">VARIANCES FOR THAT BRANCH</button>
-            <button class='display button' id="all">ALL IN ONE TABLE</button>
-
         </div>
-        <div class="card-panel">
-            <p>You selected $foo branch</p>
-            <p>For $bar period</p>
-            <p>Display as $foo</p>
-            <div class="button-group">
-                <button id="continue" class="primary    button">CONTINUE</button>
-                <button id="cancel" class="button" >CANCEL</button>
-            </div>
         </div>
     </body>
 
