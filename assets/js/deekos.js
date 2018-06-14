@@ -48,7 +48,7 @@ function Delivery() {
                 "display": this.display
             });
 
-            window.open("delivery_report.php?q=" + json);
+            window.open("report.php?q=" + json);
         }
 
     }
@@ -64,26 +64,26 @@ function Handlers() {
         let display = document.getElementsByClassName('display');
         let ok = document.getElementById('continue');
         let cancel = document.getElementById('cancel');
-
+        let d = new Delivery;
         this_ = this;
         for (x in client) {
             client[x].onclick = function () {
-                delivery.branch = this.textContent;
+                d.branch = this.textContent;
                 this_.activeSelector("branch", this);
             }
         }
 
         for (x in period) {
             period[x].onclick = function () {
-                delivery.period = this.textContent;
+                d.period = this.textContent;
                 this_.activeSelector("period", this);
             }
         }
 
         for (x in display) {
             display[x].onclick = function () {
-                delivery.display = this.id;
-                delivery.process();
+                d.display = this.id;
+                d.process();
             }
         }
     };

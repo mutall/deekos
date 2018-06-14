@@ -192,7 +192,7 @@ class Delivery {
         $client_names = $this->crud->getData($sql);
 
         foreach($client_names as $key =>$value){
-            echo "<button class='client button'>".$value['name']."</button>";
+            echo "<button class='client button'>".$value['name']. "</button>";
         }
 
 

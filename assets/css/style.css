@@ -25,6 +25,9 @@ body {
     background-color: rgb(211, 211, 211);
 }
 
+.container{
+    margin: 0 auto;
+}
 /*Setup grid view widths*/
 
 .col-1 {
@@ -80,7 +83,7 @@ body {
 }
 
 .flex-container > * {
-    flex-direction: column;
+    flex-direction: row;
 }
 
 
@@ -169,7 +172,7 @@ content {
 /*style the client group independently*/
 
 .branch {
-    height: 400px !important;
+    height: 300px !important;
     flex-direction: column;
 
 }
